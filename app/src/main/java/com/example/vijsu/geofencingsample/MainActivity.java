@@ -300,21 +300,21 @@ public class MainActivity extends AppCompatActivity implements
      * the user's location.
      */
     public void populateGeofenceList() {
-        getLocation();
+//        getLocation();
        /* mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         mLatitude = mLastLocation.getLatitude();
         mLongitude = mLastLocation.getLongitude();*/
       /*  mLatitude = 17.441241;
         mLongitude = 78.649233;*/
-        mGeofenceList.add(new Geofence.Builder()
+        /*mGeofenceList.add(new Geofence.Builder()
                 .setRequestId("Infy")
                 .setCircularRegion(
                        mLatitude,mLongitude,Constants.GEOFENCE_RADIUS_IN_METERS)
                 .setExpirationDuration(Constants.GEOFENCE_EXPIRATION_IN_MILLISECONDS)
                 .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_DWELL|Geofence.GEOFENCE_TRANSITION_ENTER|Geofence.GEOFENCE_TRANSITION_EXIT)
                 .setLoiteringDelay(10000)
-                .build());
-        /*for (Map.Entry<String, LatLng> entry : Constants.BAY_AREA_LANDMARKS.entrySet()) {
+                .build());*/
+        for (Map.Entry<String, LatLng> entry : Constants.INFY_LANDMARKS.entrySet()) {
 
             mGeofenceList.add(new Geofence.Builder()
                     // Set the request ID of the geofence. This is a string to identify this
@@ -327,7 +327,6 @@ public class MainActivity extends AppCompatActivity implements
                             entry.getValue().longitude,
                             Constants.GEOFENCE_RADIUS_IN_METERS
                     )
-
                             // Set the expiration duration of the geofence. This geofence gets automatically
                             // removed after this period of time.
                     .setExpirationDuration(Constants.GEOFENCE_EXPIRATION_IN_MILLISECONDS)
@@ -339,18 +338,18 @@ public class MainActivity extends AppCompatActivity implements
 
                             // Create the geofence.
                     .build());
-            Log.d(TAG, "populateGeofenceList: "+entry.getKey().toString());
-        }*/
+            Log.d(TAG, "populateGeofenceList: "+entry.getKey());
+        }
     }
 
-    private void getLocation() {
+    /*private void getLocation() {
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (mLastLocation != null) {
             mLatitude = mLastLocation.getLatitude();
             mLongitude = mLastLocation.getLongitude();
             Toast.makeText(MainActivity.this, "OnCreate:" + mLatitude + mLongitude, Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
     /**
      * Ensures that only one button is enabled at any time. The Add Geofences button is enabled
@@ -369,8 +368,13 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onLocationChanged(Location location) {
+
+    }
+
+  /*  @Override
+    public void onLocationChanged(Location location) {
             mLatitude = location.getLatitude();
             mLongitude = location.getLongitude();
-    }
+    }*/
 }
 
