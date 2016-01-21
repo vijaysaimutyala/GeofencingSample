@@ -28,7 +28,7 @@ public class Constants {
      */
     public static final long GEOFENCE_EXPIRATION_IN_MILLISECONDS =
             GEOFENCE_EXPIRATION_IN_HOURS * 60 * 60 * 1000;
-    public static final float GEOFENCE_RADIUS_IN_METERS =200 ; // 1 mile, 1.6 km
+    public static final float GEOFENCE_RADIUS_IN_METERS =100 ; // 1 mile, 1.6 km
 
     /**
      * Map for storing information about airports in the San Francisco bay area.
@@ -37,6 +37,7 @@ public class Constants {
     static {
         //myLocation
         INFY_LANDMARKS.put("my Location",new LatLng(17.441269, 78.649272));
+        /*
         // Infy main gate
         INFY_LANDMARKS.put("Infy Main Gate", new LatLng(17.444973, 78.640227));
 
@@ -55,7 +56,24 @@ public class Constants {
         //B2B3
         INFY_LANDMARKS.put("B2 B3", new LatLng(17.447065, 78.635728));
         //CoffeeDay
-        INFY_LANDMARKS.put("Coffee Day", new LatLng(17.446952, 78.634808));
+        INFY_LANDMARKS.put("Coffee Day", new LatLng(17.446952, 78.634808));*/
+        //OmniHospital
+        INFY_LANDMARKS.put("OmniHospital", new LatLng(17.368476, 78.538722));
+        INFY_LANDMARKS.put("MahalaxmiTheater", new LatLng(17.369457, 78.539835));
+        INFY_LANDMARKS.put("ChinaBazar", new LatLng(17.370841, 78.540574));
+        INFY_LANDMARKS.put("Mohan Nagar", new LatLng(17.373738, 78.549656));
+        INFY_LANDMARKS.put("NagoleXroads", new LatLng(17.376287, 78.557124));
+        INFY_LANDMARKS.put("Nagole Busstop", new LatLng(17.376287, 78.557124));
+        INFY_LANDMARKS.put("Uppal Metro", new LatLng(17.399967, 78.560170));
+        INFY_LANDMARKS.put("Uppal X roads bus stop", new LatLng(17.400904, 78.560096));
+        INFY_LANDMARKS.put("Uppal Gandhi Statue", new LatLng(17.401495, 78.565305));
+        INFY_LANDMARKS.put("Uppal Bus stop", new LatLng(17.401382, 78.568515));
+        INFY_LANDMARKS.put("Peerzadiguda", new LatLng(17.401393, 78.581510));
+        INFY_LANDMARKS.put("Boduppal kaman", new LatLng(17.404789, 78.586811));
+        INFY_LANDMARKS.put("Medipally", new LatLng(17.410190, 78.603229));
+        INFY_LANDMARKS.put("McD", new LatLng(17.419380, 78.635472));
+        INFY_LANDMARKS.put("Zenpact", new LatLng(17.443170, 78.649576));
+        INFY_LANDMARKS.put("Infy Main Gate", new LatLng(17.444976, 78.640206));
 
     }
 }

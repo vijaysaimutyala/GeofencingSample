@@ -141,14 +141,10 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onConnected(Bundle connectionHint) {
         Log.i(TAG, "Connected to GoogleApiClient");
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (mLastLocation != null) {
-            mLatitude= mLastLocation.getLatitude();
-            mLongitude= mLastLocation.getLongitude();
-            Toast.makeText(MainActivity.this, ""+mLatitude+mLongitude, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "No location detected", Toast.LENGTH_LONG).show();
-        }
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(1000);
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
 
     }
 

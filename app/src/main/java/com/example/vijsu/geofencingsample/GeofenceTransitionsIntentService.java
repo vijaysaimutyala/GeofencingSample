@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.RingtoneManager;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
@@ -17,6 +18,7 @@ import com.google.android.gms.location.GeofencingEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by vijsu on 20-01-2016.
@@ -135,10 +137,15 @@ public class GeofenceTransitionsIntentService extends IntentService{
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(),
                         R.mipmap.ic_launcher))
                 .setColor(Color.RED)
-                .setContentTitle(notificationDetails)
+                .setContentTitle("Geofence Status")
                 .setContentText(getString(R.string.geofence_transition_notification_text))
-                .setContentIntent(notificationPendingIntent);
-
+                .setContentIntent(notificationPendingIntent)
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
+        bigTextStyle.bigText(notificationDetails);
+        bigTextStyle.setBigContentTitle("GeoFence Status");
+        bigTextStyle.setSummaryText("From GeofenceApp");
+        builder.setStyle(bigTextStyle);
         // Dismiss notification once the user touches it.
         builder.setAutoCancel(true);
 
@@ -147,7 +154,9 @@ public class GeofenceTransitionsIntentService extends IntentService{
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Issue the notification
-        mNotificationManager.notify(0, builder.build());
+        Random random = new Random();
+        int i = random.nextInt()+20;
+        mNotificationManager.notify(i, builder.build());
     }
 
     /**
@@ -162,6 +171,8 @@ public class GeofenceTransitionsIntentService extends IntentService{
                 return getString(R.string.geofence_transition_entered);
             case Geofence.GEOFENCE_TRANSITION_EXIT:
                 return getString(R.string.geofence_transition_exited);
+            case Geofence.GEOFENCE_TRANSITION_DWELL:
+                return getString(R.string.geofence_transition_dwell);
             default:
                 return getString(R.string.unknown_geofence_transition);
         }
